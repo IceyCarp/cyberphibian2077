@@ -41,4 +41,16 @@ public class PlayerMovement : MonoBehaviour
             playerTransform.position = new Vector3(playerTransform.position.x - jumpLength, playerTransform.position.y, playerTransform.position.z);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Log") && this.transform.position.z > 2)
+        {
+            Debug.Log("LOG");
+        }
+        else if (!collision.gameObject.CompareTag("Log") && this.transform.position.z > 2)
+        {
+            Debug.Log("DEAD");
+        }
+    }
 }

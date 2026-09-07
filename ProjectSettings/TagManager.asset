@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - SuperMegaDeath
+  - Log
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ public class StrangerDanger : MonoBehaviour
 {
     public bool moveLeft;
     public float speed;
+    public bool isLog;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
