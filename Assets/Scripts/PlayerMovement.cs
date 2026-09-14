@@ -9,12 +9,22 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] PlayerInput input;
     [SerializeField] private Transform playerTransform;
+    [SerializeField] Animator animator;
+
+    void Start()
+    {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
 
     public void OnForward(InputAction.CallbackContext cxt)
     {
         if (cxt.started)
         {
             playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z + jumpLength);
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -23,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         if (cxt.started)
         {
             playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z - jumpLength);
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -31,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (cxt.started)
         {
             playerTransform.position = new Vector3(playerTransform.position.x + jumpLength, playerTransform.position.y, playerTransform.position.z);
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -39,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (cxt.started)
         {
             playerTransform.position = new Vector3(playerTransform.position.x - jumpLength, playerTransform.position.y, playerTransform.position.z);
+            animator.SetTrigger("Jump");
         }
     }
 
