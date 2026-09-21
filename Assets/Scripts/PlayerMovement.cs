@@ -29,11 +29,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (cxt.started)
         {
-            //playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z + jumpLength);
-            //playerTransform.position = transform.position + transform.forward * jumpLength;
-            goHere = transform.position + transform.forward * jumpLength;
-            moving = true;
-            animator.SetTrigger("Jump");
+            if (moving == false)
+            {
+                goHere = transform.position + transform.forward * jumpLength;
+                moving = true;
+                animator.SetTrigger("Jump");
+            }
         }
     }
 
