@@ -66,4 +66,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("DEAD");
         }
     }
+
+    public void Update()
+    {
+        transform.Rotate(0, 3, 0);
+    }
+
+    public void FixedUpate()
+    {
+        transform.Rotate(0, 3, 0);
+    }
 }
