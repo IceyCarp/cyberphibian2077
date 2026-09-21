@@ -1,6 +1,7 @@
 using GatorDragonGames.JigglePhysics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] private Transform playerTransform;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject movementIndicator;
+    bool moving = false;
+    Vector3 goHere;
+    [SerializeField] float smoothSpeed;
 
     void Start()
     {
@@ -25,13 +30,14 @@ public class PlayerMovement : MonoBehaviour
         if (cxt.started)
         {
             //playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z + jumpLength);
-            playerTransform.position = transform.position + transform.forward * jumpLength;
-
+            //playerTransform.position = transform.position + transform.forward * jumpLength;
+            goHere = transform.position + transform.forward * jumpLength;
+            moving = true;
             animator.SetTrigger("Jump");
         }
     }
 
-    public void OnBackwards(InputAction.CallbackContext cxt)
+    /*public void OnBackwards(InputAction.CallbackContext cxt)
     {
         if (cxt.started)
         {
@@ -56,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             playerTransform.position = new Vector3(playerTransform.position.x - jumpLength, playerTransform.position.y, playerTransform.position.z);
             animator.SetTrigger("Jump");
         }
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -72,11 +78,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
-        transform.Rotate(0, 3, 0);
-    }
+        if (moving == false)
+        {
+            movementIndicator.transform.position = new Vector3(transform.position.x, movementIndicator.transform.position.y,transform.position.z) + transform.forward * jumpLength;
+        }
 
-    public void FixedUpate()
+        if (moving == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, goHere, smoothSpeed);
+            if (Vector3.Distance(transform.position, goHere) < 1)
+            {
+                moving = false;
+            }
+        }
+    }
+    public void FixedUpdate()
     {
-        transform.Rotate(0, 3, 0);
+        if (moving == false)
+        {
+            transform.Rotate(0, 2, 0);
+        }
     }
 }
