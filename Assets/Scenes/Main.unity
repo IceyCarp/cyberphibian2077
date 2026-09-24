@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.5396226, g: 0.47418815, b: 0.43475255, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -1747,33 +1747,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367204853}
   m_Mesh: {fileID: 2212009239438826721, guid: 491e4985702a847499c16789525e5394, type: 3}
---- !u!1 &396721773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6820176934785104008, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-  m_PrefabInstance: {fileID: 3567396587360705347}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &396721775
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396721773}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dd593d89a51afdc4785eca3d936e0cf0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &472394824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,37 +2728,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 358906142924939545, guid: 8e3a8f91aa5797442842e400e9a32de2, type: 3}
   m_PrefabInstance: {fileID: 364450108}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &931416752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6076146194338990659, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-  m_PrefabInstance: {fileID: 3567396587360705347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &931416758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7122278147589827687, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
   m_PrefabInstance: {fileID: 3567396587360705347}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &931416759
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931416752}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2.2, z: 1}
-  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1 &933157057
 GameObject:
   m_ObjectHideFlags: 0
@@ -6057,52 +6004,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[1].normalizedDistanceFromRoot
-      value: 0.27975264
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[2].normalizedDistanceFromRoot
-      value: 0.47009504
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[3].normalizedDistanceFromRoot
-      value: 0.66400087
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[4].normalizedDistanceFromRoot
-      value: 0.8310636
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[6].normalizedDistanceFromRoot
-      value: 0.47009504
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[8].normalizedDistanceFromRoot
-      value: 0.8310636
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[10].normalizedDistanceFromRoot
-      value: 0.44359508
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jiggleRigData.transformCachedData.Array.data[11].normalizedDistanceFromRoot
-      value: 0.55114746
-      objectReference: {fileID: 0}
-    - target: {fileID: 287340509373940935, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
       propertyPath: jiggleRigData.transformCachedData.Array.data[12].normalizedDistanceFromRoot
       value: 0.7491746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739853378187447509, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 396721775}
-    - target: {fileID: 2739853378187447509, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: jumpLength
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739853378187447509, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      propertyPath: smoothSpeed
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2739853378187447509, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
       propertyPath: movementIndicator
@@ -6159,13 +6062,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6076146194338990659, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 931416759}
-    - targetCorrespondingSourceObject: {fileID: 6820176934785104008, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 396721775}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84b46d07207b3804a8374a57a0d5f31a, type: 3}
 --- !u!4 &4075816772413176082
 Transform:
