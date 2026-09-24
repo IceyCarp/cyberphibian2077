@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1707297511432618255}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.64, z: -0.40000153}
+  m_LocalPosition: {x: 0, y: 1.64, z: 4.5999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -604,7 +604,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1000
+      scalar: 500
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5139,6 +5139,18 @@ PrefabInstance:
     - target: {fileID: 1974950137235983769, guid: d30f44dc82fc513419f2190beef0b567, type: 3}
       propertyPath: m_Name
       value: Player model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058275539214840278, guid: d30f44dc82fc513419f2190beef0b567, type: 3}
+      propertyPath: jiggleRigData.jiggleTreeInputParameters.stretch.value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058275539214840278, guid: d30f44dc82fc513419f2190beef0b567, type: 3}
+      propertyPath: jiggleRigData.jiggleTreeInputParameters.advancedToggle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058275539214840278, guid: d30f44dc82fc513419f2190beef0b567, type: 3}
+      propertyPath: jiggleRigData.jiggleTreeInputParameters.stiffness.value
+      value: 0.555
       objectReference: {fileID: 0}
     - target: {fileID: 5058275539214840278, guid: d30f44dc82fc513419f2190beef0b567, type: 3}
       propertyPath: jiggleRigData.transformCachedData.Array.data[1].normalizedDistanceFromRoot
