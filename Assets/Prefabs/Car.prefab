@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 80543497847141019}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Log
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b8e9b7703d85068478607ee0d441f3e7, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8e9b7703d85068478607ee0d441f3e7, type: 3}
+      propertyPath: m_TagString
+      value: Log
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

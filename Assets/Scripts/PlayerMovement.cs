@@ -1,4 +1,5 @@
 using GatorDragonGames.JigglePhysics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
@@ -16,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
     bool moving = false;
     Vector3 goHere;
     [SerializeField] float smoothSpeed;
+    RaycastHit hit;
+    Rigidbody rb;
+    float deathTimer = 0;
+    bool dead = false;
+    [SerializeField] GameObject jiggler;
 
     void Start()
     {
@@ -23,81 +29,97 @@ public class PlayerMovement : MonoBehaviour
         {
             animator = GetComponent<Animator>();
         }
+        rb = GetComponent<Rigidbody>();
     }
 
     public void OnForward(InputAction.CallbackContext cxt)
     {
-        if (cxt.started)
+        if (dead == false)
         {
-            if (moving == false)
+            if (cxt.started)
             {
-                goHere = transform.position + transform.forward * jumpLength;
-                moving = true;
-                animator.SetTrigger("Jump");
+                if (moving == false)
+                {
+                    goHere = transform.position + transform.forward * jumpLength;
+                    moving = true;
+                    animator.SetTrigger("Jump");
+                }
             }
         }
     }
 
-    /*public void OnBackwards(InputAction.CallbackContext cxt)
-    {
-        if (cxt.started)
-        {
-            playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z - jumpLength);
-            animator.SetTrigger("Jump");
-        }
-    }
-
-    public void OnRight(InputAction.CallbackContext cxt)
-    {
-        if (cxt.started)
-        {
-            playerTransform.position = new Vector3(playerTransform.position.x + jumpLength, playerTransform.position.y, playerTransform.position.z);
-            animator.SetTrigger("Jump");
-        }
-    }
-
-    public void OnLeft(InputAction.CallbackContext cxt)
-    {
-        if (cxt.started)
-        {
-            playerTransform.position = new Vector3(playerTransform.position.x - jumpLength, playerTransform.position.y, playerTransform.position.z);
-            animator.SetTrigger("Jump");
-        }
-    }*/
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Log") && this.transform.position.z > 2)
+        if (collision.gameObject.CompareTag("Car"))
         {
-            Debug.Log("LOG");
+            Dead();
         }
-        else if (!collision.gameObject.CompareTag("Log") && this.transform.position.z > 2)
-        {
-            Debug.Log("DEAD");
-        }
+
     }
 
     public void Update()
     {
         if (moving == false)
         {
-            movementIndicator.transform.position = new Vector3(transform.position.x, movementIndicator.transform.position.y,transform.position.z) + transform.forward * jumpLength;
+            movementIndicator.transform.position = new Vector3(transform.position.x, movementIndicator.transform.position.y, transform.position.z) + transform.forward * jumpLength;
+
+            Physics.Raycast(transform.position, Vector3.down, out hit);
+            Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "Log")
+            {
+                transform.SetParent(hit.transform);
+            }
+
+            if (hit.collider.tag == "Water")
+            {
+                Dead();
+            }
+
+            if (dead == true)
+            {
+                deathTimer += Time.deltaTime;
+            }
+
+            if (deathTimer > 2)
+            {
+                Respawn();
+            }
+
+
         }
 
         if (moving == true)
         {
             transform.position = Vector3.Lerp(transform.position, goHere, smoothSpeed);
-            if (Vector3.Distance(transform.position, goHere) < 0.5)
+            if (Vector3.Distance(transform.position, goHere) < 0.2)
             {
                 moving = false;
             }
+
+            transform.SetParent(null);
         }
     }
     public void FixedUpdate()
     {
-        if (moving == false)
+        if (moving == false && dead == false)
         {
             transform.Rotate(0, 2, 0);
         }
+    }
+
+
+    public void Dead()
+    {
+        var jiggler = gameObject.GetComponentInChildren<JiggleRigData>();
+        jiggler.jiggleTreeInputParameters.stiffness.value = 0.2f;
+        jiggler.jiggleTreeInputParameters.soften = 0.8f;
+        dead = true;
+        rb.isKinematic = false;
+        movementIndicator.SetActive(false);
+    }
+    public void Respawn()
+    {
+        deathTimer = 0;
+        Debug.Log("ploob");
     }
 }

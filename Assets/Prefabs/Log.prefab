@@ -141,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flatoing platform
       objectReference: {fileID: 0}
+    - target: {fileID: 5928469165491297653, guid: 60e4ffee210cef64996c690e514d1da9, type: 3}
+      propertyPath: m_TagString
+      value: Log
+      objectReference: {fileID: 0}
     - target: {fileID: 6300158981904422460, guid: 60e4ffee210cef64996c690e514d1da9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
