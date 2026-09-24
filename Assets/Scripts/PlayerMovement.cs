@@ -135,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
     public void Respawn()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         Instantiate(instantiationPlayer, spawnPoint);
         gameObject.GetComponent<PlayerMovement>().enabled = false;
     }
