@@ -2,6 +2,7 @@ using GatorDragonGames.JigglePhysics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] Animator animator;
     [SerializeField] GameObject movementIndicator;
+    [SerializeField] GameObject instantiationPlayer;
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] Camera camera;
+
+
     bool moving = false;
     Vector3 goHere;
     [SerializeField] float smoothSpeed;
@@ -21,10 +27,12 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     float deathTimer = 0;
     bool dead = false;
-    [SerializeField] GameObject jiggler;
+    
 
     void Start()
     {
+        camera = FindAnyObjectByType<Camera>();
+        camera.GetComponent<CameraScript>().target = gameObject.transform;
         if (animator == null)
         {
             animator = GetComponent<Animator>();
@@ -110,16 +118,24 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dead()
     {
-        var jiggler = gameObject.GetComponentInChildren<JiggleRigData>();
-        jiggler.jiggleTreeInputParameters.stiffness.value = 0.2f;
-        jiggler.jiggleTreeInputParameters.soften = 0.8f;
+
+        JiggleRigData data = gameObject.GetComponentInChildren<JiggleRig>().GetJiggleRigData();
+
+        JiggleTreeInputParameters per = data.jiggleTreeInputParameters;
+
+        per.stiffness.value = 0f;
+        per.soften = 1f;
+
+        gameObject.GetComponentInChildren<JiggleRig>().SetInputParameters(per);
+
         dead = true;
         rb.isKinematic = false;
         movementIndicator.SetActive(false);
     }
     public void Respawn()
     {
-        deathTimer = 0;
-        Debug.Log("ploob");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Instantiate(instantiationPlayer, spawnPoint);
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
     }
 }
