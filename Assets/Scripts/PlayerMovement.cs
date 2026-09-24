@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         if (moving == true)
         {
             transform.position = Vector3.Lerp(transform.position, goHere, smoothSpeed);
-            if (Vector3.Distance(transform.position, goHere) < 1)
+            if (Vector3.Distance(transform.position, goHere) < 0.5)
             {
                 moving = false;
             }
